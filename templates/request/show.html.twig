@@ -2,7 +2,7 @@
 
 {% block body %}
     <a href="{{ path('request.list') }}">К списку</a>
-    <h1>Запрос : {{ requst.title }}</h1>
+    <h1>Запрос : {{ request.title }}</h1>
     <div>
         <table width="100%" border="1">
             <thead>
@@ -11,15 +11,15 @@
             <tbody>
                 <tr>
                     <td>Сообщение</td>
-                    <td>{{ requst.message }}</td>
+                    <td>{{ request.message }}</td>
                 </tr>
                 <tr>
                     <td>Статус</td>
-                    <td>{{ requst.status }}</td>
+                    <td>{{ request.status }}</td>
                 </tr>
                 <tr>
                     <td>Дата создания</td>
-                    <td>{{ requst.createAt.format('Y.m.d H:i:s') }}</td>
+                    <td>{{ request.createAt.format('Y.m.d H:i:s') }}</td>
                 </tr>
             </tbody>
         </table>

@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+{% form_theme addingForm 'bootstrap_5_layout.html.twig' %}
+
+{% block body %}
+    <h1>Добавить запрос</h1>
+    <div>
+        {{ form(addingForm) }}
+    </div>
+{% endblock %}

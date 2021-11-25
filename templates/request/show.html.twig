@@ -2,11 +2,12 @@
 
 {% block body %}
     <a href="{{ path('request.list') }}">К списку</a>
-    <h1>Запрос : {{ request.title }}</h1>
+    <h1>Запрос : {{ request.title }}
+        <a class="btn btn-outline-primary" href="{{ path('request.edit', {'id': request.id}) }}">Редактировать</a>
+    </h1>
     <div>
-        <table width="100%" border="1">
-            <thead>
-
+        <table class="table">
+            <thead class=" ">
             </thead>
             <tbody>
                 <tr>
@@ -20,6 +21,10 @@
                 <tr>
                     <td>Дата создания</td>
                     <td>{{ request.createAt.format('Y.m.d H:i:s') }}</td>
+                </tr>
+                <tr>
+                    <td>Создатель</td>
+                    <td>{{ request.createBy }}</td>
                 </tr>
             </tbody>
         </table>

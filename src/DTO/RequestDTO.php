@@ -2,6 +2,7 @@
 
 namespace App\DTO;
 
+use App\Entity\Request;
 use Symfony\Component\Validator\Constraints as Assert;
 
 class RequestDTO
@@ -18,6 +19,15 @@ class RequestDTO
      */
     private ?string $message;
 
+    public static function createFormEntity(Request $request): self
+    {
+        $dto = new self();
+
+        $dto->setTitle($request->getTitle());
+        $dto->setMessage($request->getMessage());
+
+        return $dto;
+    }
 
     public function getTitle(): ?string
     {

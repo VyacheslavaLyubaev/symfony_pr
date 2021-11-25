@@ -15,8 +15,6 @@ class DefaultController extends AbstractController
      */
     public function indexAction(): Response
     {
-        return $this->render('base.html.twig', [
-            'name' => 'я тебя люблю'
-        ]);
+        return $this->render('base.html.twig');
     }
 }

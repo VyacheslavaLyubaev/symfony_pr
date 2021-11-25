@@ -19,11 +19,11 @@ class Request
      */
     private ?int $id;
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=255, name="title")
      */
     private string $title;
     /**
-     * @ORM\Column(type="text",length=10000)
+     * @ORM\Column(type="text", name="message")
      */
     private string $message;
     /**
@@ -35,6 +35,11 @@ class Request
      */
     private DateTime $createAt;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="requests")
+     */
+    private ?User $createBy;
+
     public function __construct(string $title, string $message)
     {
         $this->title = $title;
@@ -45,6 +50,14 @@ class Request
     public static function createFromDTO(RequestDTO $dto): self
     {
         return new self($dto->getTitle(), $dto->getMessage());
+    }
+
+    public function updateFromDTO(RequestDTO $dto): self
+    {
+        $this->setTitle($dto->getTitle());
+        $this->setMessage($dto->getMessage());
+
+        return $this;
     }
 
 
@@ -87,4 +100,15 @@ class Request
     {
         return $this->createAt;
     }
+
+    public function getCreateBy(): ?User
+    {
+        return $this->createBy;
+    }
+
+    public function setCreateBy(?User $createBy): void
+    {
+        $this->createBy = $createBy;
+    }
+
 }
